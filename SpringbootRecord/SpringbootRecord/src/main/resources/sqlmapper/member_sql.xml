@@ -30,6 +30,17 @@
         WHERE login_id = #{strLoginId}
     </select>
 
+    <select id="findId" resultType="com.spring.boot.vo.Vo_member">
+        SELECT *
+        FROM study_member
+        WHERE name = #{strName}
+    </select>
+
+    <select id="findIdCheck" resultType="int">
+        SELECT count(*)
+        FROM study_member
+        WHERE name = #{strName}
+    </select>
 
 
 </mapper>

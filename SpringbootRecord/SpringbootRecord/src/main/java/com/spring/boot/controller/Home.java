@@ -99,10 +99,6 @@ public class Home {
 }
 
 
-
-
-
-
 /**
  @RequestMapping("/home")
  public String doHome2(){

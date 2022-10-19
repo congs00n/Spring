@@ -34,6 +34,8 @@ header
     String strAuth = (String) request.getAttribute("ss_auth");
     /* 권한이 null 이면 즉, 권한이 없으면 */
     if(strAuth == null) { strAuth = "N"; }
+
+
 %>
 
 <header class="p-3 text-bg-dark">
@@ -42,16 +44,17 @@ header
             <img src="/img/heart.png" width="50px" height="50px">
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="/home" class="nav-link px-2 text-secondary">🏠Home</a></li>
-
-            <% if("Y".equals(strAuth)){%>
                 <li><a href="/study/list" class="nav-link px-2 text-white"> 📚공부기록 </a></li>
+                <li><a href="/file/file_reg" class="nav-link px-2 text-white"> 💾첨부파일 </a></li>
+                <li><a href="/file/file_reg" class="nav-link px-2 text-white"> 📬쪽지하기 </a></li>
+
+
+<%--                 <% if("Y".equals(strAuth)){%>--%>
                 <li><a href="/home/member_reg" class="nav-link px-2 text-white"> 💗회원등록 </a></li>
                 <li><a href="/member/list" class="nav-link px-2 text-white"> 👥회원목록조회실습 </a></li>
                 <li><a href="/home/zipcode_search" class="nav-link px-2 text-white"> 💌우편번호조회실습 </a></li>
                 <li><a href="/home/zipcode_list" class="nav-link px-2 text-white"> 🔎우편번호 리스트 </a></li>
-                <li><a href="/file/file_reg" class="nav-link px-2 text-white"> 💾첨부파일 </a></li>
-                <li><a href="/file/file_reg" class="nav-link px-2 text-white"> 📬쪽지하기 </a></li>
-            <%}%>
+<%--            <%}%>--%>
             </ul>
 
           <div class="text-end">

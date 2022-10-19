@@ -15,4 +15,9 @@ public interface MemDao {
 
     /* 로그인 */
     public Vo_member doMemberLogin(String strLoginId);
+
+    /* 사용자가 입력한 이메일로 아이디 찾기 */
+    public Vo_member findId(String strName);
+
+    public int findIdCheck(String strName);
 }

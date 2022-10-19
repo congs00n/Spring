@@ -6,10 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -109,5 +106,28 @@ public class Login {
         session.invalidate();
         return "redirect:/";
     }
+
+    /* 비밀번호*/
+    @RequestMapping(value="/findIdView", method = RequestMethod.GET)
+    public String findIdView(){
+        return "/login/findIdView";
+    }
+
+    @RequestMapping(value="/findId", method=RequestMethod.POST)
+    public String findId(Vo_member vo_member, Model model){
+        log.info("memberName ==> "+vo_member.getName());
+        /* 1) 사용자가 입력한 이름이 DB에 없을 경우
+        *  2) 사용자가 입력한 이름이 DB에 있을 경우
+        * */
+        if(memberService.findIdCheck(vo_member.getName())==0){
+            model.addAttribute("msg", "이름을 확인해 주세요.");
+            return "/login/findIdView";
+        }else {
+            model.addAttribute("member", memberService.findId(vo_member.getName()));
+            return "/login/findId";
+        }
+
+    }
+
 }
 
